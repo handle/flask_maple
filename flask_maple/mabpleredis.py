@@ -13,7 +13,7 @@
 from redis import StrictRedis
 
 
-class Redis(object):
+class MabpleRedis(object):
     def __init__(self, app=None, **options):
         self.app = app
         self.options = options
@@ -23,9 +23,8 @@ class Redis(object):
     def init_app(self, app):
         config = app.config
         self._redis_client = StrictRedis(
-            db=config['REDIS_DB'],
-            password=config['REDIS_PASSWORD'],
-            **self.options)
+            host=config['CACHE_REDIS_HOST'],port=config['CACHE_REDIS_PORT'],db=0,
+            password=config['REDIS_PASSWORD'])
 
     def __getattr__(self, name):
         return getattr(self._redis_client, name)

@@ -30,7 +30,7 @@ class Captcha(object):
 
     def validate(self):
         t = GenCaptcha()
-        buf = t.start(font_type=self.font)
+        buf = t.start(font_type=None)
         buf_value = buf.getvalue()
         response = self.app.make_response(buf_value)
         response.headers['Content-Type'] = 'image/jpeg'
@@ -42,7 +42,7 @@ class GenCaptcha(object):
     _upper_cases = _letter_cases.upper()
     _numbers = ''.join(map(str, range(3, 10)))
     init_chars = ''.join((_letter_cases, _upper_cases, _numbers))
-    fontType = "/usr/share/fonts/TTF/DejaVuSans.ttf"
+    fontType = "DejaVuSans.ttf"
 
     def create_validate_code(self,
                              size=(120, 30),
