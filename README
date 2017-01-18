@@ -1,3 +1,5 @@
+FORK FROM git@github.com:honmaple/flask-maple.git
+
 ## Flask-Maple
 It's easy to use captcha and bootstrap
 
